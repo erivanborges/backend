@@ -10,8 +10,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 
 /**
  *
@@ -25,10 +27,11 @@ public class MedicoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_medico", nullable = false)
     private Long id;
-    @OneToMany
+    //@OneToMany Nao e uma collection ou colecao
+    @ManyToOne
     @JoinColumn(name = "cod_cidade", nullable = false)
     private CidadeEntity cidade;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "num_ambulatorio", nullable = false)
     private AmbulatorioEntity ambulatorio;
     @Column(name = "nome_medico", length = 50)

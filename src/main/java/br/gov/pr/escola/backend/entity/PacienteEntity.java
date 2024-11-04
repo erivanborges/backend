@@ -10,7 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -25,7 +26,8 @@ public class PacienteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_paciente", nullable = false)
     private Long id;
-    @OneToMany
+    //@OneToMany
+    @ManyToOne
     @JoinColumn(name = "cod_cidade", nullable = false)
     private CidadeEntity cidade;
     @Column(name = "nome_paciente", length = 50)

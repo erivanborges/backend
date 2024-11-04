@@ -4,7 +4,14 @@
  */
 package br.gov.pr.escola.backend.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.sql.Time;
 import java.util.Date;
@@ -17,10 +24,20 @@ import java.util.Date;
 @Table(name = "consulta")
 public class ConsultaEntity {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cod_consulta", nullable = false)
     private Long id;
+    //@ManyToMany ocorre error pois é anotada diretamente como '@JoinColumn'
+    @ManyToOne
+    @JoinColumn(name = "cod_medico", nullable = false)
     private MedicoEntity medico;
+    @ManyToOne
+    @JoinColumn(name = "cod_paciente", nullable = false)
     private PacienteEntity paciente;
+    @Column(name = "data_consulta")
     private Date data;
+    @Column(name = "hora_consulta")
     private Time hora;
 
     /**
