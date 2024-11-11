@@ -6,6 +6,8 @@ package br.gov.pr.escola.backend.repository;
 
 import br.gov.pr.escola.backend.entity.CidadeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +16,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CidadeRepository extends JpaRepository<CidadeEntity, Long>{
+    
+    @Query(value = "SELECT * FROM cidade WHERE cod_cidade = :id", nativeQuery = true)
+    public CidadeEntity getById(@Param("id") Long id);
     
 }

@@ -6,6 +6,8 @@ package br.gov.pr.escola.backend.repository;
 
 import br.gov.pr.escola.backend.entity.ConsultaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +16,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ConsultaRepository extends JpaRepository<ConsultaEntity, Long>{
+    
+    @Query(value = "SELECT * FROM consulta WHERE cod_consulta = :id", nativeQuery = true)
+    public ConsultaEntity getById(@Param("id") Long id);
     
 }

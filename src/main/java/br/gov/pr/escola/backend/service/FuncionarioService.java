@@ -8,6 +8,7 @@ import br.gov.pr.escola.backend.entity.FuncionarioEntity;
 import br.gov.pr.escola.backend.repository.FuncionarioRepository;
 import br.gov.pr.escola.backend.util.IBaseService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
